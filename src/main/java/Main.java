@@ -86,40 +86,44 @@ public class Main {
 
         Connection conn = null;
         Statement statement = null;
-        ResultSet tables = null;
-        ResultSet queryResult = null;
+        ResultSet result = null;
+
         try {
 
             conn = source.getConnection();
-            DatabaseMetaData metaData = conn.getMetaData();
-            tables = metaData.getTables(null, null, "%",
-                    null);
+            statement = conn.createStatement();
 
-            while(tables.next()){
+            String query =  "SELECT * FROM " +
 
-                System.out.println(tables.getString(3));
-                statement = conn.createStatement();
-                queryResult = statement.executeQuery("SELECT * FROM " +
-                                                        tables.getString(3));
+                            "(SELECT * FROM employee " +
+                            "WHERE education_level=\'" + educationLevel +
+                            "\') AS r1 " +
 
-                ResultSetMetaData rsmd = queryResult.getMetaData();
+                            "INNER JOIN " +
 
-                while(queryResult.next()) {
-                    for(int i = 1; i <= rsmd.getColumnCount(); i++){
+                            "(SELECT department_id FROM department " +
+                            "WHERE department_description=\'" + department +
+                            "\') AS r2 " +
 
-                        System.out.println(rsmd.getColumnName(i));
-                        System.out.println(queryResult.getString(i) + " ");
-                    }
-                }
-            }
+                            "ON r1.department_id = r2.department_id " +
+
+                            "INNER JOIN " +
+
+                            "(SELECT position_id FROM position " +
+                            "WHERE pay_type=\'" + payType + "\') AS r3 " +
+
+                            "ON r1.position_id = r3.position_id";
+
+            result = statement.executeQuery(query);
+            while(result.next())
+                System.out.println(result.getString("full_name"));
 
         } catch (Exception e) {
 
             System.err.println(e.getMessage());
         } finally {
 
-            queryResult.close();
-            tables.close();
+            result.close();
             statement.close();
             conn.close();
         }
