@@ -1,6 +1,10 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSetMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -12,15 +16,22 @@ public class Main {
         System.out.println("Choose exercise (1/2):");
 
         Scanner scanner = new Scanner(System.in);
-        int path = scanner.nextInt();
-        scanner.nextLine();
+        int path = 0;
+        try {
 
-        if(scanner.nextInt() == 1){
+            path = Integer.parseInt(scanner.nextLine());
+        }
+        catch (NumberFormatException e){
+
+            System.err.println(e.getMessage());
+        }
+
+        if(path == 1){
 
             System.out.println("TEST 1\n\nProvide 2 strings to compare\nFirst String:");
             String first = scanner.nextLine();
 
-            System.out.println("Second String:\n");
+            System.out.println("Second String:");
             String second = scanner.nextLine();
 
             if(first.length() == second.length())
@@ -28,15 +39,15 @@ public class Main {
             else
                 System.out.println("Provide strings with the same length!");
         }
-        else if(scanner.nextInt() == 2){
+        else if(path == 2){
 
-            System.out.println("TEST 2\n\nProvide the department:\n");
+            System.out.println("TEST 2\n\nProvide the department:");
             String department = scanner.nextLine();
 
-            System.out.println("Provide the pay type:\n");
+            System.out.println("Provide the pay type:");
             String payType = scanner.nextLine();
 
-            System.out.println("Provide the education level:\n");
+            System.out.println("Provide the education level:");
             String educationLevel = scanner.nextLine();
 
             query(department, payType, educationLevel);
@@ -47,11 +58,19 @@ public class Main {
 
     public static int compare(String first, String second){
 
-        int numberOfDifs = 0;
+        int[] frequency = new int[256];
+
 
         for(int i = 0; i < first.length(); i++)
-            if(first.charAt(i) != second.charAt(i))
-                numberOfDifs++;
+            frequency[first.charAt(i)]++;
+        for(int i = 0; i < first.length(); i++)
+            frequency[second.charAt(i)]--;
+
+
+        int numberOfDifs = 0;
+        for(int i = 0; i < 256; i++)
+            if(frequency[i] > 0)
+            numberOfDifs += frequency[i];
 
         return numberOfDifs;
     }
@@ -66,17 +85,42 @@ public class Main {
         source.setDatabaseName("foodmart");
 
         Connection conn = null;
-
+        Statement statement = null;
+        ResultSet tables = null;
+        ResultSet queryResult = null;
         try {
 
             conn = source.getConnection();
-            System.out.println(department + "\n" + payType +
-                               "\n" + educationLevel);
+            DatabaseMetaData metaData = conn.getMetaData();
+            tables = metaData.getTables(null, null, "%",
+                    null);
+
+            while(tables.next()){
+
+                System.out.println(tables.getString(3));
+                statement = conn.createStatement();
+                queryResult = statement.executeQuery("SELECT * FROM " +
+                                                        tables.getString(3));
+
+                ResultSetMetaData rsmd = queryResult.getMetaData();
+
+                while(queryResult.next()) {
+                    for(int i = 1; i <= rsmd.getColumnCount(); i++){
+
+                        System.out.println(rsmd.getColumnName(i));
+                        System.out.println(queryResult.getString(i) + " ");
+                    }
+                }
+            }
+
         } catch (Exception e) {
 
             System.err.println(e.getMessage());
         } finally {
 
+            queryResult.close();
+            tables.close();
+            statement.close();
             conn.close();
         }
     }
