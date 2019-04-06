@@ -20,8 +20,11 @@ The <<foodmart>> database has 3 tables:
 
 2. employees
 
-| employee_id  |    full_name   | first_name | last_name | position_id | position_title | store_id | department_id |   birth_date  |       hire_date        | end_date |    salary    | supervisor_id |  education_level  | marital_status | gender | management_role     | 
-|      :1:     | :Sheri Nowmer: |  :Sheri:   | :Nowmer:  |     :1:     |  :President:   |    :0:   |       :1:     |     :1961-08-26:      | :1994-12-01 00:00:00.0:|   :null: | :80000.0000: |      :0:      | :Graduate Degree: |       :S:      |   :F:  | :Senior Management: |
+| employee_id |    full_name    | first_name | last_name | position_id | position_title     | store_id | department_id | birth_date | hire_date             | end_date | salary     | supervisor_id | education_level | marital_status | gender | management_role   |
+|-------------|:---------------:|-----------:|-----------|-------------|--------------------|----------|---------------|------------|-----------------------|----------|------------|---------------|-----------------|----------------|--------|-------------------|
+| 1           | Sheri Nowmer    | Sheri      | Nowmer    | 1           | President          | 0        | 1             | 1961-08-26 | 1994-12-01 00:00:00.0 | null     | 80000.0000 | 0             | Graduate Degree | S              | F      | Senior Management |
+...
+| 2           | Derrick Whelply |    Derrick | Whelply   | 2           | VP Country Manager | 0        | 1             | 1915-07-03 | 1994-12-01 00:00:00.1 | null     | 40000.0000 | 1             | Graduate Degree | M              | M      | Senior Management |
 
 
 3. position
