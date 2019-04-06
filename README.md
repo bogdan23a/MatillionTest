@@ -30,6 +30,7 @@ The <<foodmart>> database has 3 tables:
 3. position
 
 | position_id  |    position_title    | pay_type  |   min_scale  |  max_scale   |   management_role   |
+|--------------|----------------------|-----------|--------------|--------------|---------------------|
 |      :1:     |      :President:     | :Monthly: | :25000.0000: | :85000.0000: | :Senior Management: |
 ...
 |      :2:     | :VP Country Manager: | :Monthly: | :20000.0000: | :40000.0000: | :Senior Management: |
