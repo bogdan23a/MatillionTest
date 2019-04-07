@@ -1,5 +1,5 @@
 # MatillionTest
-Project for solving the matillion tech test challenge
+Project for solving the Matillion Tech Test Challenge
 
 ## Test 1
 
@@ -35,7 +35,7 @@ located here: http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.2
 
 The <foodmart> database has 3 tables:
 
-1. department
+* department
   
 | department_id  |   department_description   |
 |----------------|----------------------------|
@@ -46,7 +46,7 @@ The <foodmart> database has 3 tables:
 ... 
 |        19      |  Store Permanent Butchers  | 
 
-2. employees
+* employees
 
 | employee_id |    full_name    | first_name | last_name | position_id | position_title     | store_id | department_id | birth_date | hire_date             | end_date | salary     | supervisor_id | education_level | marital_status | gender | management_role   |
 |-------------|:---------------:|-----------:|-----------|-------------|--------------------|----------|---------------|------------|-----------------------|----------|------------|---------------|-----------------|----------------|--------|-------------------|
@@ -55,7 +55,7 @@ The <foodmart> database has 3 tables:
 | 2           | Derrick Whelply |    Derrick | Whelply   | 2           | VP Country Manager | 0        | 1             | 1915-07-03 | 1994-12-01 00:00:00.1 | null     | 40000.0000 | 1             | Graduate Degree | M              | M      | Senior Management |
 
 
-3. position
+* position
 
 | position_id  |    position_title    | pay_type  |   min_scale  |  max_scale   |   management_role   |
 |--------------|----------------------|-----------|--------------|--------------|---------------------|
