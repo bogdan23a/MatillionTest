@@ -1,12 +1,6 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSetMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
@@ -43,9 +37,11 @@ public class Main {
 
             System.out.println("TEST 2\n\nProvide the department:");
             String department = scanner.nextLine();
+            System.out.println();
 
             System.out.println("Provide the pay type:");
             String payType = scanner.nextLine();
+            System.out.println();
 
             System.out.println("Provide the education level:");
             String educationLevel = scanner.nextLine();
@@ -93,7 +89,10 @@ public class Main {
             conn = source.getConnection();
             statement = conn.createStatement();
 
-            String query =  "SELECT * FROM " +
+            String query =  "SELECT r1.full_name, r1.position_title, " +
+                            "r2.department_description, r1.birth_date, " +
+                            "r1.hire_date, r1.end_date, r1.salary, " +
+                            "r3.pay_type, r1.education_level FROM " +
 
                             "(SELECT * FROM employee " +
                             "WHERE education_level=\'" + educationLevel +
@@ -101,7 +100,7 @@ public class Main {
 
                             "INNER JOIN " +
 
-                            "(SELECT department_id FROM department " +
+                            "(SELECT * FROM department " +
                             "WHERE department_description=\'" + department +
                             "\') AS r2 " +
 
@@ -109,14 +108,14 @@ public class Main {
 
                             "INNER JOIN " +
 
-                            "(SELECT position_id FROM position " +
+                            "(SELECT position_id, pay_type FROM position " +
                             "WHERE pay_type=\'" + payType + "\') AS r3 " +
 
                             "ON r1.position_id = r3.position_id";
 
             result = statement.executeQuery(query);
-            while(result.next())
-                System.out.println(result.getString("full_name"));
+
+            printQueryResult(result);
 
         } catch (Exception e) {
 
@@ -127,5 +126,27 @@ public class Main {
             statement.close();
             conn.close();
         }
+    }
+
+    private static void printQueryResult(ResultSet result) throws SQLException{
+
+        System.out.println();
+
+        ResultSetMetaData md = result.getMetaData();
+        for(int i = 1; i <= 9; i++)
+            System.out.print(md.getColumnName(i) + "\t");
+
+        System.out.println("\n");
+
+        while(result.next()) {
+
+
+            for(int i = 1; i <= 9; i++) {
+
+                System.out.print(result.getString(i) + "\t");
+            }
+            System.out.println();
+        }
+
     }
 }
