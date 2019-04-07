@@ -43,7 +43,9 @@ These instructions will get you a copy of the project up and how to execute the 
 
 ### Prerequisites
 
-
+```
+java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes Main
+```
 The <foodmart> database has 3 tables:
 
 * department
