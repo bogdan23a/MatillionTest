@@ -1,11 +1,39 @@
 # MatillionTest
 Project for solving the matillion tech test challenge
 
-Test 1:
+## Test 1
 
-Test 2:
+In this scenario, there are two strings of equal length, however between them there are a number of
+differences. Compare the two strings and return the number of differences in characters between the two.
 
-The <<foodmart>> database has 3 tables:
+### Example:
+```
+D23W8MCCIZQOP9
+D236862CEZQOPS
+```
+In this case the number of differences between the two strings is 5.
+To summarize: Write a method to compare the number of character-based differences between two given
+strings. The method should return a single number, denoting the number of differences.
+
+## Test 2
+
+For this test you can access an already established MySQL database. This has three tables, populated with
+Data.
+The connection details you need are
+
+```
+Hostname: mysql-technical-test.cq5i4y35n9gg.eu-west-1.rds.amazonaws.com
+Username: technical_test
+Password: HopefullyProspectiveDevsDontBreakMe
+Database: foodmart
+```
+Write a command line Java program that allows the user to specify a department, pay type and education
+level, and then connects to the shared database and runs the query with those options. The program should
+then display the results of the query.
+To connect to the database you should use a connector jar such as the one
+located here: http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.21
+
+The <foodmart> database has 3 tables:
 
 1. department
   
