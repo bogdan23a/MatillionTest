@@ -24,6 +24,7 @@ public class Main {
 
             System.out.println("TEST 1\n\nProvide 2 strings to compare\nFirst String:");
             String first = scanner.nextLine();
+            System.out.println();
 
             System.out.println("Second String:");
             String second = scanner.nextLine();
