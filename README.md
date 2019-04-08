@@ -43,7 +43,12 @@ These instructions will get you a copy of the project up and how to execute the 
 
 ### Prerequisites
 
-You can either run the project with an IDE or straight from the command line. Also, you need a copy of the [MySQL Java Connector](http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.21) on your machine.
+In order to run this project you need either an IDE or just to install Maven on your machine.
+```sudo apt-get install mvn
+# if that does not work, try
+sudo apt-get install maven
+```
+Also, you need a copy of the [MySQL Java Connector](http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.21) on your machine.
 
 ### Cloning
 
@@ -61,14 +66,25 @@ In order to run the project from an IDE you need to edit the already existing ru
 
 From the root folder of the project use
 ```
-java -cp [PATH_TO_MYSQL_JAVA_CONNECTOR_JAR_FILE]:./target/classes Main
+mvn compile
 ```
 to run the project
 
 On my machine, I run it with the following command:
 ```
+java -cp [PATH_TO_MYSQL_JAVA_CONNECTOR_JAR_FILE]:./target/classes Main
 java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes Main
 ``` 
+
+### Testing
+
+I've written tests using JUnit4 only for the first task as writting tests for the second would imply testing the Database which is not needed.
+
+Use 
+```
+mvn clean test
+```
+to run the tests.
 
 ## Sample I/O
 
