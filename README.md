@@ -44,7 +44,8 @@ These instructions will get you a copy of the project up and how to execute the 
 ### Prerequisites
 
 In order to run this project you need either an IDE or just to install Maven on your machine.
-```sudo apt-get install mvn
+```
+sudo apt-get install mvn
 # if that does not work, try
 sudo apt-get install maven
 ```
