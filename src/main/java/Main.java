@@ -1,68 +1,76 @@
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+import javax.print.DocFlavor;
 import java.sql.*;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) throws SQLException{
 
-        System.out.println("Choose exercise (1/2):");
+        System.out.println("Choose exercise (1/2):bacoaie");
 
         Scanner scanner = new Scanner(System.in);
-        int path = 0;
+
+        int exercise = 0;
         try {
+            exercise = Integer.parseInt(scanner.nextLine());}
 
-            path = Integer.parseInt(scanner.nextLine());
-        }
         catch (NumberFormatException e){
+            System.err.println("Input must be 1 or 2");}
 
-            System.err.println(e.getMessage());
-        }
+        if(exercise == 1)
+            runTest1(scanner);
 
-        if(path == 1){
+        else if(exercise == 2)
+            runTest2(scanner);
 
-            System.out.println("TEST 1\n\nProvide 2 strings to compare\nFirst String:");
-            String first = scanner.nextLine();
-            System.out.println();
-
-            System.out.println("Second String:");
-            String second = scanner.nextLine();
-
-            if(first.length() == second.length())
-                System.out.println(compare(first, second));
-            else
-                System.out.println("Provide strings with the same length!");
-        }
-        else if(path == 2){
-
-            System.out.println("TEST 2\n\nProvide the department:");
-            String department = scanner.nextLine();
-            System.out.println();
-
-            System.out.println("Provide the pay type:");
-            String payType = scanner.nextLine();
-            System.out.println();
-
-            System.out.println("Provide the education level:");
-            String educationLevel = scanner.nextLine();
-
-            query(department, payType, educationLevel);
-        }
         else
-            System.out.println("Not a valid input!");
+            System.out.println("Input must be 1 or 2");
+    }
+
+    private static void runTest1(Scanner scanner){
+
+        System.out.println("TEST 1\n\nProvide 2 strings to compare" +
+                                                            "\nFirst String:");
+        String first = scanner.nextLine();
+        System.out.println();
+
+        System.out.println("Second String:");
+        String second = scanner.nextLine();
+
+        if(first.length() == second.length())
+            System.out.println(compare(first, second));
+        else
+            System.out.println("Provide strings with the same length!");
+    }
+
+    private static void runTest2(Scanner scanner) throws SQLException{
+
+        System.out.println("TEST 2\n\nProvide the department:");
+        String department = scanner.nextLine();
+        System.out.println();
+
+        System.out.println("Provide the pay type:");
+        String payType = scanner.nextLine();
+        System.out.println();
+
+        System.out.println("Provide the education level:");
+        String educationLevel = scanner.nextLine();
+
+        query(department, payType, educationLevel);
     }
 
     public static int compare(String first, String second){
 
         int[] frequency = new int[256];
 
-
         for(int i = 0; i < first.length(); i++)
             frequency[first.charAt(i)]++;
         for(int i = 0; i < first.length(); i++)
             frequency[second.charAt(i)]--;
-
 
         int numberOfDifs = 0;
         for(int i = 0; i < 256; i++)
@@ -73,12 +81,13 @@ public class Main {
     }
 
     public static void query(String department, String payType,
-                             String educationLevel) throws SQLException {
+                                    String educationLevel) throws SQLException {
 
         MysqlDataSource source = new MysqlDataSource();
         source.setUser("technical_test");
         source.setPassword("HopefullyProspectiveDevsDontBreakMe");
-        source.setServerName("mysql-technical-test.cq5i4y35n9gg.eu-west-1.rds.amazonaws.com");
+        source.setServerName("mysql-technical-test.cq5i4y35n9gg.eu-west-1.rds" +
+                             ".amazonaws.com");
         source.setDatabaseName("foodmart");
 
         Connection conn = null;
@@ -86,7 +95,6 @@ public class Main {
         ResultSet result = null;
 
         try {
-
             conn = source.getConnection();
             statement = conn.createStatement();
 
@@ -141,13 +149,10 @@ public class Main {
 
         while(result.next()) {
 
-
-            for(int i = 1; i <= 9; i++) {
-
+            for(int i = 1; i <= 9; i++)
                 System.out.print(result.getString(i) + "\t");
-            }
+
             System.out.println();
         }
-
     }
 }
