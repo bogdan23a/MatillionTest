@@ -67,7 +67,7 @@ to run the project
 
 On my machine, I run it with the following command:
 ```
-java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./targe/classes Main
+java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes Main
 ``` 
 
 ## Sample I/O
