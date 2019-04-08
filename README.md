@@ -64,15 +64,17 @@ In order to run the project from an IDE you need to edit the already existing ru
 
 ### Running from the command line
 
-From the root folder of the project use
+To compile the project use:
 ```
 mvn compile
 ```
-to run the project
-
-On my machine, I run it with the following command:
+To run the project use:
 ```
 java -cp [PATH_TO_MYSQL_JAVA_CONNECTOR_JAR_FILE]:./target/classes Main
+```
+
+eg:
+```
 java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes Main
 ``` 
 
@@ -80,11 +82,10 @@ java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes
 
 I've written tests using JUnit4 only for the first task as writting tests for the second would imply testing the Database which is not needed.
 
-Use 
+To run the tests use
 ```
 mvn clean test
 ```
-to run the tests.
 
 ## Sample I/O
 
