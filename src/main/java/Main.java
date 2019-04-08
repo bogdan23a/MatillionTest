@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException{
 
-        System.out.println("Choose exercise (1/2):bacoaie");
+        System.out.println("Choose exercise (1/2):");
 
         Scanner scanner = new Scanner(System.in);
 
