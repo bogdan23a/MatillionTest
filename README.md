@@ -70,6 +70,46 @@ On my machine, I run it with the following command:
 java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./targe/classes Main
 ``` 
 
+## Sample I/O
+
+Test 1:
+```
+Choose exercise (1/2):
+1
+TEST 1
+
+Provide 2 strings to compare
+First String:
+D23W8MCCIZQOP9
+
+Second String:
+D236862CEZQOPS
+5
+
+```
+
+Test 2:
+```
+Choose exercise (1/2):
+2
+TEST 2
+
+Provide the department:
+HQ General Management
+
+Provide the pay type:
+Monthly
+
+Provide the education level:
+Graduate Degree
+
+| full_name       |   position_title   | department_description | birth_date | hire_date             | end_date | salary     | pay_type | education_level |
+|-----------------|:------------------:|-----------------------:|------------|-----------------------|----------|------------|----------|-----------------|
+| Sheri Nowmer    | President          | HQ General Management  | 1961-08-26 | 1994-12-01 00:00:00.0 | null     | 80000.0000 | Monthly  | Graduate Degree |
+| Derrick Whelply	 | VP Country Manager |  HQ General Management | 1915-07-03 | 1994-12-01 00:00:00.0 | null     | 40000.0000 | Monthly  | Graduate Degree |
+| Michael Spence  | VP Country Manager | HQ General Management  | 1969-06-20 | 1998-01-01 00:00:00.0 | null     | 40000.0000 | Monthly  | Graduate Degree |
+```
+
 ## Index
 
 ### Test 2 Info:
