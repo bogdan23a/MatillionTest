@@ -102,13 +102,13 @@ Monthly
 
 Provide the education level:
 Graduate Degree
-
+```
 | full_name       |   position_title   | department_description | birth_date | hire_date             | end_date | salary     | pay_type | education_level |
 |-----------------|:------------------:|-----------------------:|------------|-----------------------|----------|------------|----------|-----------------|
 | Sheri Nowmer    | President          | HQ General Management  | 1961-08-26 | 1994-12-01 00:00:00.0 | null     | 80000.0000 | Monthly  | Graduate Degree |
 | Derrick Whelply	 | VP Country Manager |  HQ General Management | 1915-07-03 | 1994-12-01 00:00:00.0 | null     | 40000.0000 | Monthly  | Graduate Degree |
 | Michael Spence  | VP Country Manager | HQ General Management  | 1969-06-20 | 1998-01-01 00:00:00.0 | null     | 40000.0000 | Monthly  | Graduate Degree |
-```
+
 
 ## Index
 
