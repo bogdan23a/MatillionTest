@@ -1,9 +1,9 @@
-# MatillionTest
-Project for solving the Matillion Tech Test Challenge
+# Matillion Test
+Project done in IntelliJ IDEA for solving the Matillion Tech Test Challenge.
 
 ## Introduction
 
-The challenge involves solving the following problems
+The challenge involves solving the following problems:
 
 ### Test 1
 
@@ -43,10 +43,38 @@ These instructions will get you a copy of the project up and how to execute the 
 
 ### Prerequisites
 
+You can either run the project with an IDE or straight from the command line. Also, you need a copy of the [MySQL Java Connector](http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.21) on your machine.
+
+### Cloning
+
+Use
 ```
-java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./target/classes Main
+git clone https://github.com/bogdan23a/MatillionTest.git
 ```
-The <foodmart> database has 3 tables:
+to get a copy of the project.
+
+### IDE Setup
+
+In order to run the project from an IDE you need to edit the already existing run configurations and add the classpath to use the 'test1' module. And do the same for running the tests.
+
+### Running from the command line
+
+From the root folder of the project use
+```
+java -cp [PATH_TO_MYSQL_JAVA_CONNECTOR_JAR_FILE]:./target/classes Main
+```
+to run the project
+
+On my machine, I run it with the following command:
+```
+java -cp /home/bogdan/Downloads/mysql-connector-java-5.1.21.jar:./targe/classes Main
+``` 
+
+## Index
+
+### Test 2 Info:
+
+The foodmart database has 3 tables:
 
 * department
   
